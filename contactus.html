@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Early Mood 早晨研究所｜訂位</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-badge" aria-hidden="true"></div>
+      <div class="brand-title"><strong>Early Mood 早晨研究所</strong><span>Warm Japanese Morning</span></div>
+    </a>
+
+    <nav class="nav">
+      <a href="index.html">首頁</a>
+      <a href="intro.html">關於我們</a>
+      <a href="snack.html">點心</a>
+      <a href="drink.html">飲料</a>
+      <a href="salad.html">莎拉的</a>
+      <a href="eggpancake.html">蛋餅</a>
+      <a href="toast.html">抹醬土司・厚片</a>
+      <a href="sandwich.html">三明治</a>
+      <a href="burger.html">漢堡</a>
+      <a href="noodle.html">鐵板麵</a>
+      <a class="active" href="contactus.html">訂位</a>
+      <a class="cart-link" href="contactus.html">🛒 <span class="cart-badge is-zero" id="cartCount">0</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <section class="banner">
+      <div class="banner-inner">
+        <div>
+          <h1>訂位專區</h1>
+          <p>填寫表單或直接來電訂位，我們會為你保留一個舒服的早晨位置。</p>
+          <div class="btn-row">
+            <a class="btn" href="index.html">回首頁</a>
+            <a class="btn" href="drink.html">先看飲料</a>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge">📅 可選日期</div>
+          <div class="badge">📞 電話訂位</div>
+          <div class="badge">🪑 座位偏好</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <div class="section-title">
+          <h2>線上訂位表單</h2>
+          <small>送出後會顯示完成提示（示範版）</small>
+        </div>
+
+        <form class="form" id="reserveForm">
+          <div class="field">
+            <label for="name">姓名 *</label>
+            <input id="name" name="name" type="text" placeholder="例如：張喆喆" required />
+          </div>
+
+          <div class="field">
+            <label for="phone">電話 *</label>
+            <input id="phone" name="phone" type="tel" placeholder="例如：09xx-xxx-xxx" required />
+          </div>
+
+          <div class="field">
+            <label for="people">人數 *</label>
+            <select id="people" name="people" required>
+              <option value="">請選擇</option>
+              <option>1</option><option>2</option><option>3</option><option>4</option>
+              <option>5</option><option>6</option><option>7</option><option>8</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="date">日期 *</label>
+            <input id="date" name="date" type="date" required />
+          </div>
+
+          <div class="field">
+            <label for="time">時段 *</label>
+            <select id="time" name="time" required>
+              <option value="">請選擇</option>
+              <option>08:00</option><option>08:30</option><option>09:00</option><option>09:30</option>
+              <option>10:00</option><option>10:30</option><option>11:00</option><option>11:30</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label>座位偏好</label>
+            <div class="radio-row" role="group" aria-label="座位偏好">
+              <label class="radio"><input type="radio" name="seat" value="靠窗" checked />靠窗</label>
+              <label class="radio"><input type="radio" name="seat" value="吧台" />吧台</label>
+              <label class="radio"><input type="radio" name="seat" value="一般" />一般</label>
+              <label class="radio"><input type="radio" name="seat" value="皆可" />皆可</label>
+            </div>
+            <div class="help">* 依現場狀況安排，會盡量符合偏好。</div>
+          </div>
+
+          <div class="field full">
+            <label for="note">備註（過敏/不吃/需求）</label>
+            <textarea id="note" name="note" placeholder="例如：不吃香菜、對堅果過敏、需要兒童椅"></textarea>
+          </div>
+
+          <div class="field full">
+            <button class="btn primary" type="submit">送出訂位</button>
+            <div class="help" id="result" aria-live="polite" style="margin-top:10px;"></div>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="panel">
+        <h2 style="margin-top:0;">店家資訊</h2>
+        <p><strong>📍 地址：</strong>臺北市大安區信義路四段103號2F</p>
+        <p><strong>📞 訂位電話：</strong><a href="tel:0222218889">02-2221-8889</a></p>
+        <p><strong>⏰ 營業時間：</strong>08:00 – 12:30（每週一公休）</p>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Early Mood 早晨研究所</div>
+        <div class="mini"><a href="intro.html">關於我們</a></div>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script>
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  // 限制日期不可選過去（可選）
+  const dateEl = document.getElementById("date");
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, "0");
+  const dd = String(today.getDate()).padStart(2, "0");
+  if (dateEl) dateEl.min = `${yyyy}-${mm}-${dd}`;
+
+  // 表單示範送出
+  const form = document.getElementById("reserveForm");
+  const result = document.getElementById("result");
+  if (form && result){
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value.trim();
+      const people = document.getElementById("people").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const seat = (new FormData(form)).get("seat");
+      result.textContent = `已收到 ${name} 的訂位：${date} ${time}，${people} 位（偏好：${seat}）。我們會盡快與你確認！`;
+      form.reset();
+    });
+  }
+
+  // cart count
+  const cartCountEl = document.getElementById("cartCount");
+  function getCartCount(){ return Number(localStorage.getItem("cartCount") || 0); }
+  function setCartCount(n){
+    const v = Math.max(0, Number(n) || 0);
+    localStorage.setItem("cartCount", String(v));
+    if (cartCountEl){
+      cartCountEl.textContent = v;
+      cartCountEl.classList.toggle("is-zero", v === 0);
+    }
+  }
+  setCartCount(getCartCount());
+</script>
+</body>
+</html>
+

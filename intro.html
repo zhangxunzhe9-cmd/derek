@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Early Mood 早晨研究所｜關於我們</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html" aria-label="回首頁">
+      <div class="brand-badge" aria-hidden="true"></div>
+      <div class="brand-title">
+        <strong>Early Mood 早晨研究所</strong>
+        <span>Warm Japanese Morning • 早餐與咖啡</span>
+      </div>
+    </a>
+
+    <nav class="nav" aria-label="主選單">
+      <a href="index.html">首頁</a>
+      <a class="active" href="intro.html">關於我們</a>
+      <a href="snack.html">點心</a>
+      <a href="drink.html">飲料</a>
+      <a href="salad.html">莎拉的</a>
+      <a href="eggpancake.html">蛋餅</a>
+      <a href="toast.html">抹醬土司・厚片</a>
+      <a href="sandwich.html">三明治</a>
+      <a href="burger.html">漢堡</a>
+      <a href="noodle.html">鐵板麵</a>
+      <a href="contactus.html">訂位</a>
+
+      <a class="cart-link" href="contactus.html" aria-label="購物車">
+        🛒 <span class="cart-badge is-zero" id="cartCount">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+    <section class="banner" aria-label="關於我們">
+      <div class="banner-inner">
+        <div>
+          <h1>關於我們</h1>
+          <p>我們把「剛剛好」當作早餐的理想：不膩口、吃完不累、視覺留白但很有溫度。</p>
+          <div class="btn-row">
+            <a class="btn primary" href="contactus.html">訂位</a>
+            <a class="btn" href="sandwich.html">看三明治</a>
+          </div>
+        </div>
+        <div class="badges">
+          <div class="badge">🍳 現點現做</div>
+          <div class="badge">🧂 調味收斂</div>
+          <div class="badge">☕ 溫柔咖啡</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-title">
+        <h2>三個堅持</h2>
+        <small>簡單但不隨便</small>
+      </div>
+
+      <div class="grid">
+        <article class="card"><div class="card-body">
+          <div class="kicker"><span class="dot"></span>口味</div>
+          <h3>越吃越順口</h3>
+          <p>少一點重鹹重甜，多一點香氣與層次。</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <div class="kicker"><span class="dot"></span>節奏</div>
+          <h3>吃完不累最重要</h3>
+          <p>份量剛好、油感收斂，帶著舒服出門。</p>
+        </div></article>
+
+        <article class="card"><div class="card-body">
+          <div class="kicker"><span class="dot"></span>空間</div>
+          <h3>留白與溫度</h3>
+          <p>把溫柔放進色彩、排版與每一道料理。</p>
+        </div></article>
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Early Mood 早晨研究所</div>
+        <div class="mini"><a href="contactus.html">訂位</a></div>
+      </div>
+    </footer>
+  </div>
+</main>
+
+<script>
+  const y = document.getElementById("year");
+  if (y) y.textContent = new Date().getFullYear();
+
+  const toast = document.createElement("div");
+  toast.className = "toast";
+  document.body.appendChild(toast);
+  function showToast(msg){
+    toast.textContent = msg;
+    toast.classList.add("show");
+    clearTimeout(showToast._t);
+    showToast._t = setTimeout(()=>toast.classList.remove("show"), 1200);
+  }
+
+  const cartCountEl = document.getElementById("cartCount");
+  function getCartCount(){ return Number(localStorage.getItem("cartCount") || 0); }
+  function setCartCount(n){
+    const v = Math.max(0, Number(n) || 0);
+    localStorage.setItem("cartCount", String(v));
+    if (cartCountEl){
+      cartCountEl.textContent = v;
+      cartCountEl.classList.toggle("is-zero", v === 0);
+    }
+  }
+  setCartCount(getCartCount());
+
+  document.addEventListener("click", (e) => {
+    const favBtn = e.target.closest(".js-fav");
+    const cartBtn = e.target.closest(".js-cart");
+    if (!favBtn && !cartBtn) return;
+    const card = e.target.closest(".card");
+    const itemName = card?.querySelector("h3")?.textContent?.trim() || "此商品";
+
+    if (favBtn){
+      favBtn.classList.toggle("is-active");
+      showToast(favBtn.classList.contains("is-active") ? `已收藏：${itemName}` : `已取消收藏：${itemName}`);
+    }
+    if (cartBtn){
+      cartBtn.classList.toggle("is-active");
+      const on = cartBtn.classList.contains("is-active");
+      setCartCount(getCartCount() + (on ? 1 : -1));
+      showToast(on ? `已加入購物車：${itemName}` : `已從購物車移除：${itemName}`);
+    }
+  });
+</script>
+</body>
+</html>
+

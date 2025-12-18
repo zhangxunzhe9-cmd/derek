@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Early Mood 早晨研究所</title>
+  <link rel="stylesheet" href="style2.css" />
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <div class="brand-badge"></div>
+      <div class="brand-title">
+        <strong>Early Mood 早晨研究所</strong>
+        <span>Warm Japanese Morning · 早晨與咖啡</span>
+      </div>
+    </a>
+
+    <nav class="nav">
+      <a class="active" href="index.html">首頁</a>
+      <a href="intro.html">關於我們</a>
+      <a href="snack.html">點心</a>
+      <a href="drink.html">飲料</a>
+      <a href="salad.html">莎拉的</a>
+      <a href="eggpancake.html">蛋餅</a>
+      <a href="toast.html">抹醬土司・厚片</a>
+      <a href="sandwich.html">三明治</a>
+      <a href="burger.html">漢堡</a>
+      <a href="noodle.html">鐵板麵</a>
+      <a href="contactus.html">訂位</a>
+
+      <a class="cart-link" href="contactus.html">
+        🛒 <span class="cart-badge is-zero" id="cartCount">0</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <div class="container">
+
+    <!-- Hero Banner -->
+    <section class="banner">
+      <div class="banner-inner">
+        <div>
+          <h1>把早晨，做成一份溫柔的研究。</h1>
+          <p>
+            日系溫暖、乾淨耐吃的早餐。<br>
+            用剛剛好的調味，陪你把今天好好開始。
+          </p>
+
+          <div class="btn-row">
+            <a class="btn primary" href="contactus.html">立即訂位</a>
+            <a class="btn" href="drink.html">先看飲料</a>
+          </div>
+        </div>
+
+        <div class="badges">
+          <div class="badge">🍳 手沖溫度</div>
+          <div class="badge">🥪 現點現做</div>
+          <div class="badge">🌿 清爽不膩</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 本日人氣 -->
+    <section class="section">
+      <div class="section-title">
+        <h2>本日人氣</h2>
+        <small>先選 1–2 樣就很完整</small>
+      </div>
+
+      <div class="grid">
+
+        <!-- 1 焦糖醬油雞胸蛋餅 -->
+        <article class="card">
+          <img src="images/eggpancake-caramel-soy-chicken.jpg"
+               alt="焦糖醬油雞胸蛋餅"
+               class="card-img">
+
+          <div class="card-body">
+            <div class="kicker"><span class="dot"></span>推薦</div>
+            <h3>焦糖醬油雞胸蛋餅</h3>
+            <p>鹹甜平衡、口感乾淨，配拿鐵剛剛好。</p>
+
+            <div class="card-footer">
+              <div class="price">$85</div>
+              <div class="card-actions">
+                <button class="icon-btn js-fav">♡ 收藏</button>
+                <button class="icon-btn primary js-cart">＋ 加入</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 柚香雞胸蛋三明治 -->
+        <article class="card">
+          <img src="images/sandwich-yuzu-chicken.jpg"
+               alt="柚香雞胸蛋三明治"
+               class="card-img">
+
+          <div class="card-body">
+            <div class="kicker"><span class="dot"></span>清爽</div>
+            <h3>柚香雞胸蛋三明治</h3>
+            <p>柚香提味、雞胸不柴，清爽又有飽足感。</p>
+
+            <div class="card-footer">
+              <div class="price">$90</div>
+              <div class="card-actions">
+                <button class="icon-btn js-fav">♡ 收藏</button>
+                <button class="icon-btn primary js-cart">＋ 加入</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 焦糖燕麥拿鐵 -->
+        <article class="card">
+          <img src="images/drink-caramel-oat-latte.jpg"
+               alt="焦糖燕麥拿鐵"
+               class="card-img">
+
+          <div class="card-body">
+            <div class="kicker"><span class="dot"></span>飲品</div>
+            <h3>焦糖燕麥拿鐵</h3>
+            <p>燕麥奶溫潤順口，焦糖尾韻柔和不甜膩。</p>
+
+            <div class="card-footer">
+              <div class="price">$95</div>
+              <div class="card-actions">
+                <button class="icon-btn js-fav">♡ 收藏</button>
+                <button class="icon-btn primary js-cart">＋ 加入</button>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div>© <span id="year"></span> Early Mood 早晨研究所</div>
+        <div class="mini">
+          <a href="intro.html">關於我們</a>
+          <a href="contactus.html">訂位</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+</main>
+
+<script>
+  // 年份
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // 購物車（跨頁）
+  const cartCountEl = document.getElementById("cartCount");
+  function getCartCount(){
+    return Number(localStorage.getItem("cartCount") || 0);
+  }
+  function setCartCount(n){
+    const v = Math.max(0, n);
+    localStorage.setItem("cartCount", v);
+    cartCountEl.textContent = v;
+    cartCountEl.classList.toggle("is-zero", v === 0);
+  }
+  setCartCount(getCartCount());
+
+  // 收藏 / 加入
+  document.addEventListener("click", e => {
+    if(e.target.classList.contains("js-fav")){
+      e.target.classList.toggle("is-active");
+    }
+    if(e.target.classList.contains("js-cart")){
+      const on = e.target.classList.toggle("is-active");
+      setCartCount(getCartCount() + (on ? 1 : -1));
+    }
+  });
+</script>
+
+</body>
+</html>
+
